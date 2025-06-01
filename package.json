@@ -9,15 +9,36 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:go"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "go-struct-tag-highlighter.helloWorld",
-        "title": "Hello World"
+    "configuration": {
+      "title": "Go Struct Tag Highlighter",
+      "properties": {
+        "goStructTagHighlighter.colors.dark.key": {
+          "type": "string",
+          "default": "#E06C75",
+          "description": "Color for struct tag keys in dark mode"
+        },
+        "goStructTagHighlighter.colors.dark.value": {
+          "type": "string",
+          "default": "#98C379",
+          "description": "Color for struct tag values in dark mode"
+        },
+        "goStructTagHighlighter.colors.light.key": {
+          "type": "string",
+          "default": "#0000FF",
+          "description": "Color for struct tag keys in light mode"
+        },
+        "goStructTagHighlighter.colors.light.value": {
+          "type": "string",
+          "default": "#8B0000",
+          "description": "Color for struct tag values in light mode"
+        }
       }
-    ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run package",
