@@ -4,14 +4,14 @@ All notable changes to the "go-struct-tag-highlighter" extension will be documen
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## v0.0.1
-
-- Initial release.
-
-## v0.0.2
-
-- Fixed Cursor compatibility.
+## v0.0.4
+- Improved style rendering performance
 
 ## v0.0.3
-
 - Fixed color highlighting on incomplete struct tags.
+
+## v0.0.2
+- Fixed Cursor compatibility.
+
+## v0.0.1
+- Initial release.

@@ -14,16 +14,18 @@ export function activate(context: vscode.ExtensionContext) {
 	// This line of code will only be executed once when your extension is activated
 	console.log('Extension "go-struct-tag-highlighter" is now active');
 
-	const debouncedApplyStyles = debounce(applyStylesToActiveEditor, 50);
 
 	loadBlockStyles();
-	debouncedApplyStyles();
+	applyStylesToActiveEditor();
 
+	const debouncedApplyStyles = debounce(applyStylesToActiveEditor, 50);
 	vscode.workspace.onDidChangeTextDocument(debouncedApplyStyles);
-	vscode.workspace.onDidOpenTextDocument(debouncedApplyStyles);
+
+	vscode.window.onDidChangeActiveTextEditor(applyStylesToActiveEditor);
+	vscode.workspace.onDidOpenTextDocument(applyStylesToActiveEditor);
 	vscode.window.onDidChangeActiveColorTheme(() => {
 		loadBlockStyles();
-		debouncedApplyStyles();
+		applyStylesToActiveEditor();
 	});
 	vscode.workspace.onDidChangeConfiguration(() => {
 		loadBlockStyles();
@@ -31,7 +33,6 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	// TODO: these might be needed in the future
-	// vscode.window.onDidChangeActiveTextEditor();
 	// vscode.window.onDidChangeVisibleTextEditors();
 	// vscode.window.onDidChangeTextEditorVisibleRanges();
 }
