@@ -52,7 +52,7 @@ function applyStylesToActiveEditor() {
 	const keyRanges: vscode.DecorationOptions[] = [];
 	const valueRanges: vscode.DecorationOptions[] = [];
 
-	const regEx = /(\w+):"([^"]*)"/g;
+	const regEx = /(\w+):"([^"\n]*)"/g;
 	const text = editor.document.getText();
 
 	let match;
