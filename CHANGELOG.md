@@ -1,11 +1,10 @@
 # Change Log
 
-All notable changes to the "go-struct-tag-highlighter" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## v0.0.5
+- Do not crash if there is no active editor.
 
 ## v0.0.4
-- Improved style rendering performance
+- Improved style rendering performance.
 
 ## v0.0.3
 - Fixed color highlighting on incomplete struct tags.

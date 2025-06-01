@@ -43,7 +43,8 @@ export function deactivate() { }
 function applyStylesToActiveEditor() {
 	const editor = vscode.window.activeTextEditor;
 	if (!editor) {
-		throw new Error('No active text editor found');
+		console.error('No active text editor found.');
+		return;
 	}
 
 	if (editor.document.languageId !== 'go') {
