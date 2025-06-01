@@ -1,7 +1,12 @@
 {
   "name": "go-struct-tag-highlighter",
-  "displayName": "go-struct-tag-highlighter",
+  "displayName": "Go Struct Tag Highlighter",
   "description": "Highlights Go struct tags with theme-aware colors for improved readability and customization.",
+  "publisher": "fernandomf",
+  "icon": "images/icon_resized.png",
+  "repository": {
+    "url": "https://github.com/fernando-mf/go-struct-tag-highlighter"
+  },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.100.0"
