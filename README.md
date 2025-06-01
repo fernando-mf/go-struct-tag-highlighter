@@ -41,3 +41,7 @@ Calling out known issues can help limit users opening duplicate issues against y
 ### 0.0.1
 
 Initial release
+
+### 0.0.2
+
+Adjusted min vscode version to make it compatible with Cursor
