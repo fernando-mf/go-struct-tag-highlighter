@@ -7,7 +7,7 @@
   "repository": {
     "url": "https://github.com/fernando-mf/go-struct-tag-highlighter"
   },
-  "version": "0.0.5",
+  "version": "0.0.6",
   "engines": {
     "vscode": "^1.95.0"
   },
@@ -19,28 +19,53 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "goStructTagHighlighter.toggleCustomColors",
+        "title": "GoStructTagHighlighter: Toggle custom colors"
+      }
+    ],
+    "grammars": [
+      {
+        "path": "./syntaxes/go-struct-tags.json",
+        "scopeName": "source.go.structtag",
+        "injectTo": [
+          "source.go"
+        ]
+      }
+    ],
     "configuration": {
       "title": "Go Struct Tag Highlighter",
       "properties": {
+        "goStructTagHighlighter.colors.enabledCustom": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable custom colors for Go struct tags. If disabled, the extension will use the default theme colors.",
+          "order": 1
+        },
         "goStructTagHighlighter.colors.dark.key": {
           "type": "string",
           "default": "#E06C75",
-          "description": "Color for struct tag keys in dark mode"
+          "description": "Color for struct tag keys in dark mode",
+          "order": 2
         },
         "goStructTagHighlighter.colors.dark.value": {
           "type": "string",
           "default": "#98C379",
-          "description": "Color for struct tag values in dark mode"
+          "description": "Color for struct tag values in dark mode",
+          "order": 3
         },
         "goStructTagHighlighter.colors.light.key": {
           "type": "string",
           "default": "#0000FF",
-          "description": "Color for struct tag keys in light mode"
+          "description": "Color for struct tag keys in light mode",
+          "order": 4
         },
         "goStructTagHighlighter.colors.light.value": {
           "type": "string",
           "default": "#8B0000",
-          "description": "Color for struct tag values in light mode"
+          "description": "Color for struct tag values in light mode",
+          "order": 5
         }
       }
     }

@@ -1,0 +1,16 @@
+{
+  "scopeName": "source.go.structtag",
+  "fileTypes": ["go"],
+  "injectionSelector": ["string.quoted.raw.go -comment"],
+  "patterns": [
+    {
+      "name": "meta.struct.tag.pair.go",
+      "match": "\\b(\\w+)(:)(\"[^\"\\s]*?\")",
+      "captures": {
+        "1": { "name": "support.type.property-name.json" },
+        "2": { "name": "punctuation.separator.key-value.go" },
+        "3": { "name": "string.quoted.double.json" }
+      }
+    }
+  ]
+}

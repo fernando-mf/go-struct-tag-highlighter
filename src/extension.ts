@@ -2,11 +2,13 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-import { getColorConfigForCurrentTheme } from './config';
+import { getColorConfigForCurrentTheme, getConfig } from './config';
 import { debounce } from './utils';
 
 let tagKeyDecoration: vscode.TextEditorDecorationType;
 let tagValueDecoration: vscode.TextEditorDecorationType;
+
+let cfg: ReturnType<typeof getConfig>;
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -14,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
 	// This line of code will only be executed once when your extension is activated
 	console.log('Extension "go-struct-tag-highlighter" is now active');
 
-
+	cfg = getConfig();
 	loadBlockStyles();
 	applyStylesToActiveEditor();
 
@@ -28,6 +30,7 @@ export function activate(context: vscode.ExtensionContext) {
 		applyStylesToActiveEditor();
 	});
 	vscode.workspace.onDidChangeConfiguration(() => {
+		cfg = getConfig();
 		loadBlockStyles();
 		debouncedApplyStyles();
 	});
@@ -35,6 +38,10 @@ export function activate(context: vscode.ExtensionContext) {
 	// TODO: these might be needed in the future
 	// vscode.window.onDidChangeVisibleTextEditors();
 	// vscode.window.onDidChangeTextEditorVisibleRanges();
+
+	vscode.commands.registerCommand('goStructTagHighlighter.toggleCustomColors', () => {
+		cfg.customColorsEnabled.update(!cfg.customColorsEnabled.value);
+	});
 }
 
 // This method is called when your extension is deactivated
@@ -48,6 +55,10 @@ function applyStylesToActiveEditor() {
 	}
 
 	if (editor.document.languageId !== 'go') {
+		return;
+	}
+
+	if (!cfg.customColorsEnabled.value) {
 		return;
 	}
 

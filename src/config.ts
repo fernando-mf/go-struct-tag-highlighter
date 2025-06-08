@@ -1,9 +1,13 @@
 import * as vscode from 'vscode';
 
-function rawConfig() {
+export function getConfig() {
     const cfg = vscode.workspace.getConfiguration(`goStructTagHighlighter`);
 
     return {
+        customColorsEnabled: {
+            value: cfg.get<boolean>(`colors.enabledCustom`),
+            update: (val: boolean) => cfg.update(`colors.enabledCustom`, val)
+        },
         colorsLight: {
             key: cfg.get<string>(`colors.light.key`),
             value: cfg.get<string>(`colors.light.value`)
@@ -16,7 +20,7 @@ function rawConfig() {
 }
 
 export function getColorConfigForCurrentTheme() {
-    const cfg = rawConfig();
+    const cfg = getConfig();
 
     const currentThemeMode = vscode.window.activeColorTheme.kind;
 
