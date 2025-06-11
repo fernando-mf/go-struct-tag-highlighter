@@ -7,12 +7,14 @@
   "repository": {
     "url": "https://github.com/fernando-mf/go-struct-tag-highlighter"
   },
-  "version": "0.0.6",
+  "version": "0.0.7",
   "engines": {
     "vscode": "^1.95.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Visualization",
+    "Programming Languages"
   ],
   "activationEvents": [
     "onLanguage:go"

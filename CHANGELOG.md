@@ -1,5 +1,8 @@
 # Change Log
 
+## v0.0.7
+- Fixed `gorm` highlighting.
+
 ## v0.0.6
 - Theme aware struct tag colors: struct tags now use the colors from the current theme.
 - New configuration `goStructTagHighlighter.colors.enabledCustom`: allows users to override the current theme colors.
